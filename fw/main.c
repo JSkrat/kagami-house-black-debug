@@ -8,8 +8,8 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <avr/sleep.h>
-#include "../KagamiCore/UART parser.h"
-#include "../KagamiCore/RF model.h"
+#include "KagamiCore/UART parser.h"
+#include "KagamiCore/RF model.h"
 #include "ui.h"
 #include "RF custom functions.h"
 

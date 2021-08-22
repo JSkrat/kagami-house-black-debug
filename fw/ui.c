@@ -9,7 +9,7 @@
 #include "messages.h"
 #include <stdbool.h>
 #include <avr/interrupt.h>
-#include "../KagamiCore/defines.h"
+#include "KagamiCore/defines.h"
 #include "my-stdlib.h"
 
 

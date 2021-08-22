@@ -1,7 +1,7 @@
 #include "1202_lib.h"
 #include <stdint.h>
 #include <avr/pgmspace.h>
-#include "../KagamiCore/defines.h"
+#include "KagamiCore/defines.h"
 #include <util/delay.h>
 #include "messages.h"
 //#include "main.h"

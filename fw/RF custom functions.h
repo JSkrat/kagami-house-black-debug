@@ -9,7 +9,7 @@
 #ifndef RF_CUSTOM_FUNCTIONS_H_
 #define RF_CUSTOM_FUNCTIONS_H_
 
-#include "../KagamiCore/RF functions.h"
+#include "KagamiCore/RF functions.h"
 
 #define unitsCount 1
 extern const tUnit Units[unitsCount];

@@ -7,12 +7,12 @@
 
 #if BT_SLAVE == BUILD_TYPE
 #include "RF custom functions.h"
-#include "../KagamiCore/RF functions.h"
-#include "../KagamiCore/RF protocol.h"
+#include "KagamiCore/RF functions.h"
+#include "KagamiCore/RF protocol.h"
 #include <avr/pgmspace.h>
-#include "../KagamiCore/defines.h"
+#include "KagamiCore/defines.h"
 #include <avr/interrupt.h>
-#include "../project settings.h"
+#include "project settings.h"
 #include "ui.h"
 
 typedef struct {

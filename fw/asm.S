@@ -1,5 +1,5 @@
 #include <avr/io.h>
-#include "../KagamiCore/defines.h"
+#include "KagamiCore/defines.h"
 
 #ifdef USE_LCD
 

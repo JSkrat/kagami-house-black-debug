@@ -8,7 +8,7 @@ Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "black-debug", "black-debug.
 		{E3D7C286-CA03-421D-A230-52C981344A83} = {E3D7C286-CA03-421D-A230-52C981344A83}
 	EndProjectSection
 EndProject
-Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "KagamiCore", "..\KagamiCore\KagamiCore.cproj", "{E3D7C286-CA03-421D-A230-52C981344A83}"
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "KagamiCore", "KagamiCore\KagamiCore.cproj", "{E3D7C286-CA03-421D-A230-52C981344A83}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
