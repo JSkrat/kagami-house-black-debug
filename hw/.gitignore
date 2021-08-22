@@ -1,0 +1,14 @@
+_autosave*
+rescue-backup
+*.bak
+*.kicad_pcb-bak
+*.orig
+*.sch-bak
+hw.zip
+*.png
+*.gbr
+*.drl
+*.svg
+*.gbrjob
+*.pdf
+*.step
