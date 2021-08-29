@@ -47,3 +47,9 @@
 /*** encryption ***/
 #define RF_ENC_TOTAL 1
 
+// show error codes
+#ifndef __ASSEMBLY__
+void ui_error(unsigned char code);
+#undef RF_ERROR
+#define RF_ERROR(code) ui_error(code)
+#endif

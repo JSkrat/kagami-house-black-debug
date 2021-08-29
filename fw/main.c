@@ -24,14 +24,13 @@ int main(void)
 #if BT_MASTER == BUILD_TYPE
 	u_init();
 #endif
-#ifdef USE_LCD
 	ui_init();
-#endif
 	rf_init();
 	RFCustomFunctionsInit();
 	set_sleep_mode(SLEEP_MODE_IDLE);
 	sei();
     while (1) {
+		ui_e_main_cycle();
 		sleep_mode();
     }
 }

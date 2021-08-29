@@ -1,3 +1,4 @@
+#define __ASSEMBLY__
 #include <avr/io.h>
 #include "KagamiCore/defines.h"
 
@@ -46,3 +47,5 @@ LCD_write_byte:
     ret                                             ; 4
 
 	#endif
+
+#undef __ASSEMBLY__

@@ -11,6 +11,7 @@
 #include <avr/interrupt.h>
 #include "KagamiCore/defines.h"
 #include "my-stdlib.h"
+#include <util/delay.h>
 
 
 // debounce time in ticks
@@ -32,7 +33,7 @@ typedef struct {
 	ui_varaint type;
 } t_subsystem;
 
-void ui_error();
+void ui_error(uint8_t);
 void ui_tick();
 void ui_print(ui_subsystems subsystem, tFontStyle style);
 
@@ -47,7 +48,7 @@ void ui_init() {
 	ACSR = (1 << ACD);
 	// leds
 	DDRD |= (1 << poLED_D1) | (1 << poLED_D2);
-	portLEDS |= (1 << poLED_D1);
+	portLEDS &= ~(1 << poLED_D1) & ~(1 << poLED_D2);
 	
 	// lcd
 	#ifdef USE_LCD
@@ -115,13 +116,27 @@ void ui_redraw() {
 	#endif
 }
 
-void ui_error() {
+void ui_error(uint8_t code) {
+	if (0x10 > code) {
+		while (1) {
+			uint8_t c = code;
+			for (int i = 0; i < 4; i++) {
+				portLEDS |= _BV(poLED_D1);
+				if (c & 1) _delay_ms(300);
+				else _delay_ms(100);
+				portLEDS &= ~_BV(poLED_D1);
+				c >>= 1;
+				_delay_ms(200);
+			}
+			_delay_ms(300);
+		}
+	}
 	portLEDS |= (1 <<poLED_D1);
 }
 
 void ui_print(ui_subsystems subsystem, tFontStyle style) {
 	if (ui_s_number <= subsystem) {
-		ui_error();
+		ui_error(0x10);
 		return;
 	}
 	#ifdef USE_LCD
@@ -143,7 +158,7 @@ void ui_print(ui_subsystems subsystem, tFontStyle style) {
 
 void ui_subsystem_str(ui_subsystems subsystem, const string *message, bool in_flash) {
 	if (ui_s_number <= subsystem) {
-		ui_error();
+		ui_error(0x11);
 		return;
 	}
 	subsystems[subsystem].value.str = message;
@@ -153,7 +168,7 @@ void ui_subsystem_str(ui_subsystems subsystem, const string *message, bool in_fl
 
 void ui_subsystem_int(ui_subsystems subsystem, int16_t value) {
 	if (ui_s_number <= subsystem) {
-		ui_error();
+		ui_error(0x12);
 		return;
 	}
 	subsystems[subsystem].value.uinteger = value;
