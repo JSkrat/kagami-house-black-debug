@@ -42,6 +42,8 @@ void ui_print(ui_subsystems subsystem, tFontStyle style);
 static ui_timestamp now = 0;
 static anti_bounce_btn buttons[ui_number_of_buttons];
 static t_subsystem subsystems[ui_s_number];
+static uint8_t heartbeat_phase;
+#define HEARTBEAT_PERIOD 100
 
 void ui_init() {
 	// компаратор нафиг
@@ -176,5 +178,9 @@ void ui_subsystem_int(ui_subsystems subsystem, int16_t value) {
 }
 
 void ui_e_main_cycle() {
-	portLEDS ^= (1 << poLED_D2);
+	heartbeat_phase += 1;
+	if (HEARTBEAT_PERIOD <= heartbeat_phase) {
+		heartbeat_phase = 0;
+		portLEDS ^= (1 << poLED_D2);
+	}
 }
